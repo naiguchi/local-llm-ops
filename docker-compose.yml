@@ -1,0 +1,24 @@
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: local-llm-ops-open-webui
+    ports:
+      - "127.0.0.1:${OPEN_WEBUI_PORT:-3080}:8080"
+    environment:
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      - WEBUI_AUTH=false
+      - ENABLE_SIGNUP=false
+      - DEFAULT_LOCALE=ja-JP
+      - DEFAULT_MODELS=${DEFAULT_MODEL:-ops-ja}
+      # Notes/Calendar/Automations の組み込みツールが AWS/DB ツール呼び出しを妨害するため無効化
+      - ENABLE_NOTES=false
+      - ENABLE_CALENDAR=false
+      - ENABLE_AUTOMATIONS=false
+    volumes:
+      - open-webui-data:/app/backend/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+volumes:
+  open-webui-data:

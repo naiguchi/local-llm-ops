@@ -1,0 +1,6 @@
+# 実体の設定は profiles/repos.json（gitignore・スクリプトが読む）
+# 初回: cp profiles/repos.json.example profiles/repos.json
+# 編集後: ./scripts/index-repos.sh
+#
+# 例: 明示リポジトリを追加する場合は repos.json の repos 配列に:
+#   { "name": "myapp", "path": "~/git/myapp" }

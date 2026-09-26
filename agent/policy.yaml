@@ -1,0 +1,35 @@
+# ローカル運用エージェントの承認ポリシー（無料・小規模）
+# 秘密情報はこのファイルに書かない
+
+version: 1
+
+defaults:
+  require_human_approval: true
+  cloud_llm_forbidden: true
+
+operations:
+  connect:
+    description: 接続プロファイルに基づく接続コマンドの実行
+    require_approval: true
+    auto_execute: false
+
+  aws_bridge:
+    description: Open WebUI 経由のホスト AWS CLI（confirm=true 必須）
+    require_approval: true
+    auto_execute: false
+
+  sql_select:
+    description: 参照系 SQL（SELECT 等）
+    require_approval: true
+    auto_execute: false
+
+  sql_mutate:
+    description: 変更系 SQL（UPDATE / DELETE / INSERT / DDL）
+    require_approval: true
+    auto_execute: false
+    extra_confirm_phrase: "MUTATE"
+
+forbidden:
+  - echo_secrets_to_prompt
+  - commit_credentials_to_git
+  - use_claude_or_cursor_cloud_for_prod_ops

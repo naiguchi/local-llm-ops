@@ -1,0 +1,24 @@
+# {repo} 運用ヒント（RAG 用・ローカルのみ）
+
+このファイルを `profiles/knowledge-hints/{repo}-ops.md` にコピーして編集する。  
+Git には載せない（gitignore 済み）。`./scripts/index-repos.sh` 実行時に Knowledge へ混入される。
+
+## 用語
+
+- 例: ドメイン用語と実テーブル名の対応
+
+## よくある取り違え
+
+- 例: 「無い」と答えがちな機能の正しいフラグ名・UI 名
+
+## テナント／法人の探し方（ID は実測）
+
+```sql
+-- 例: 名前から workspace を探す（件数・集計のみ。個人一覧は出さない）
+SELECT workspace_id, workspace_name
+FROM workspace
+WHERE is_delete = false
+  AND workspace_name ILIKE '%...%';
+```
+
+件数は Knowledge から推測せず、必ずツール（open_db_tunnel → run_sql）で実測する。

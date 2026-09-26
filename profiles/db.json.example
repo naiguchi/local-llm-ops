@@ -1,0 +1,25 @@
+{
+  "connections": [
+    {
+      "name": "myapp-prod",
+      "label": "myapp 本番（例）",
+      "aws_profile": "myapp-prod",
+      "tunnel": {
+        "local_port": 15432,
+        "bastion_user": "ec2-user",
+        "ssm_params": {
+          "db_host": "/myapp/prod/db/host",
+          "db_port": "/myapp/prod/db/port",
+          "db_name": "/myapp/prod/db/name",
+          "db_user": "/myapp/prod/db/username",
+          "db_password": "/myapp/prod/db/password",
+          "bastion_key": "/myapp/prod/bastion/private_key",
+          "bastion_ip": "/myapp/prod/bastion/public_ip"
+        }
+      },
+      "sql": {
+        "allow_mutate": false
+      }
+    }
+  ]
+}

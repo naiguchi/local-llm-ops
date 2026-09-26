@@ -1,0 +1,86 @@
+{
+  "knowledge_mode": "per_repo",
+  "knowledge_description": "ローカルソース索引: {repo}（Prisma / docs / TS・TSX）。仕様はコード根拠、件数は DB ツールで実測。",
+  "attach_to_model": false,
+  "max_file_bytes": 512000,
+  "max_total_bytes": 150000000,
+  "auto_discover": {
+    "enabled": true,
+    "roots": ["~/git"],
+    "name_include": ["*"],
+    "name_exclude": ["local-llm-ops"],
+    "require_matching_files": true
+  },
+  "defaults": {
+    "max_total_bytes": 25000000,
+    "max_files": 200,
+    "include": [
+      "**/packages/prisma/prisma/schema.prisma",
+      "**/prisma/schema.prisma",
+      "**/docs/**/*.md",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "README.md",
+      "apps/**/src/**/*.{ts,tsx}",
+      "src/**/*.{ts,tsx}",
+      "packages/**/src/**/*.{ts,tsx}",
+      "app/**/*.{ts,tsx}",
+      "lib/**/*.{ts,tsx}",
+      "components/**/*.{ts,tsx}"
+    ],
+    "exclude": [
+      "**/node_modules/**",
+      "**/.git/**",
+      "**/.pnpm-store/**",
+      "**/.history/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.next/**",
+      "**/coverage/**",
+      "**/vendor/**",
+      "**/generated/**",
+      "**/*.lock",
+      "**/.env*",
+      "**/credentials*",
+      "**/secrets/**",
+      "**/tmp/**",
+      "**/filestorage/**",
+      "**/*.spec.ts",
+      "**/*.spec.tsx",
+      "**/*.test.ts",
+      "**/*.test.tsx",
+      "**/*.stories.ts",
+      "**/*.stories.tsx",
+      "**/__tests__/**",
+      "**/__mocks__/**",
+      "**/stories/**",
+      "**/e2e/**",
+      "**/integration/**",
+      "**/apiSchemas.ts",
+      "**/apiComponents.ts",
+      "**/apiFetcher.ts"
+    ]
+  },
+  "repos": [
+    {
+      "name": "myapp",
+      "path": "~/git/myapp",
+      "max_total_bytes": 80000000,
+      "max_files": 800,
+      "include": [
+        "README.md",
+        "CLAUDE.md",
+        "AGENTS.md",
+        "packages/prisma/prisma/schema.prisma",
+        "apps/**/src/**/*.{ts,tsx}",
+        "docs/**/*.md"
+      ],
+      "exclude": [
+        "**/queries/apiSchemas.ts",
+        "**/integration/**",
+        "**/*.test.tsx",
+        "**/stories/**"
+      ]
+    }
+  ]
+}

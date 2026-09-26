@@ -1,0 +1,16 @@
+.env
+*.local
+.DS_Store
+data/
+open-webui/
+*.log
+.bridge.pid
+.bridge.log
+.history/
+**/__pycache__/
+profiles/private/
+profiles/db.json
+profiles/repos.json
+profiles/knowledge-hints/
+agent/secrets/
+.ollama-pull-stamp
